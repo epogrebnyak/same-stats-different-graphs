@@ -1,0 +1,57 @@
+Ideas for refactoring
+=====================
+
+Really neded:
+
+- unit tests (started)
+- Github actions for remote tests
+
+Possible bugs:
+
+- generated image subplots are is misaligned
+
+Suggested - package structure:
+
+- separate datasets, data processing, visualisation and CLI into own modules:
+  - datasets
+  - visual.py
+  - cli.py
+  - transform.py
+
+Suggested - other:
+
+- redirect csv and png output to output directory (always writes to root now) 
+- run black and isort over code
+- unused keyword arguments in some fucntions
+
+```
+run_pattern(df,
+                target,
+                iters=100000,
+                num_frames=100,
+                decimals=2,
+                shake=0.2, # NOT USED
+                max_temp=0.4,
+                min_temp=0,
+                ramp_in=False,
+                ramp_out=False,
+                freeze_for=0,
+                reset_counts=False, # NOT USED
+                custom_points=False): # NOT USED
+```
+
+Questions:
+
+- why no space between args at samestats run <shape_start> <shape_end> [<iters>][<decimals>][<frames>]
+- why __main__.py is needed?
+- why save generated dataset in package, can save in repo folder
+
+May use:
+
+- poetry for packaging (changes workflow a bit, but simplifies many things)
+- click for CLI (docopt is ok too, but gives a tonof depreciation warnings)
+
+Enhancements/new features:
+
+- streamlit app
+- output dir for run command
